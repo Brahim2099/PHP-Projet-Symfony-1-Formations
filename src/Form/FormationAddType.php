@@ -21,6 +21,7 @@ class FormationAddType extends AbstractType
             ->add('nombreHeures', IntegerType::class)
             ->add('departement', TextType::class)
             ->add('Produit', EntityType::class, ['class'=> 'App\Entity\Produit','choice_label'=>'libelle'])
+            ->add('description', TextType::class)
             ->add('submit', SubmitType::class)
         ;
     }

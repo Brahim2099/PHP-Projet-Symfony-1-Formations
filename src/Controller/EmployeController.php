@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Employe;
+use App\Entity\Inscription;
 use App\Form\EmployeAddType;
 use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -54,5 +55,14 @@ class EmployeController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute("app_employe_list");
+    }
+
+    #[Route("/employe/inscription/list/{id}", name: "app_employe_inscription_list")]
+    public function listInscription(ManagerRegistry $doctrine, int $id): Response
+    {
+        $employe = $doctrine->getManager()->getRepository(Employe::class)->find($id);
+        $inscriptions = $doctrine->getManager()->getRepository(Inscription::class)->findBy(["Employe" => $id]);
+
+        return $this->render("employe/inscription/list.html.twig", ["employe" => $employe, "inscriptions" => $inscriptions]);
     }
 }

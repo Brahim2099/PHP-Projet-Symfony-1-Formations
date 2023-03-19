@@ -19,7 +19,9 @@
                     <th>ID</th>
                     <th>Date de début</th>
                     <th>Nombre d'heures</th>
+                    <th>Produit de la formation</th>
                     <th>Département</th>
+                    <th>Description</th>
                     <th></th>
                 </tr>
             </thead>
@@ -29,7 +31,9 @@
                         <td>{{formation.id}}</td>
                         <td>{{formation.dateDebut|date("d/m/Y")}}</td>
                         <td>{{formation.nombreHeures}}h</td>
+                        <td>{{formation.produit.libelle}}</td>
                         <td>{{formation.departement}}</td>
+                        <td>{{formation.description}}</td>
                         <td>
                             {% if is_granted("ROLE_ADMIN") %}
                                <a href="{{path("app_formation_remove", {"id": formation.id})}}" class="btn btn-danger">Supprimer</a>

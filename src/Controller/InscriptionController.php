@@ -43,18 +43,25 @@ class InscriptionController extends AbstractController
         return $this->render('inscription/list_enattente.html.twig', ['inscriptions' => $inscriptions]);
     }
 
-    #[IsGranted('ROLE_ADMIN')]
     #[Route('/inscription/add/{id}', name: 'app_inscription_add')]
     public function add(ManagerRegistry $doctrine, int $id): Response
     {
-        $inscription = new Inscription;
-        $inscription->setEmploye($this->getUser());
-        $inscription->setFormation($doctrine->getManager()->getRepository(Formation::class)->find($id));
-        $inscription->setStatut("En attente");
+        /** @var \App\Entity\Employe $employe */
+        $employe = $this->getUser();
 
-        $entityManager = $doctrine->getManager();
-        $entityManager->persist($inscription);
-        $entityManager->flush();
+        $inscription = new Inscription;
+        $inscription->setEmploye($employe);
+        $inscription->setFormation($doctrine->getManager()->getRepository(Formation::class)->find($id));
+
+        $inscriptionExistante = $doctrine->getManager()->getRepository(Inscription::class)->findBy(["Formation" => $id, "Employe" => $employe->getId(), "statut" => "Acceptée"]);
+
+        if (!$inscriptionExistante) {
+            $inscription->setStatut("En attente");
+
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($inscription);
+            $entityManager->flush();
+        }
 
         return $this->redirectToRoute("app_inscription_list");
     }
