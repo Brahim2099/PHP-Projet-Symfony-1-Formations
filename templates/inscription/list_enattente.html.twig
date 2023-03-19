@@ -11,10 +11,11 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Département de la formation</th>
-                    <th>Produit de la formation</th>
-                    <th>Durée</th>
                     <th>Date de début</th>
+                    <th>Nombres d'heures</th>
+                    <th>Produit de la formation</th>
+                    <th>Département</th>
+                    <th>Description</th>
                     <th>Nom et prénom</th>
                     <th>Statut</th>
                     <th></th>
@@ -25,10 +26,11 @@
                 {% for inscription in inscriptions %}
                     <tr>
                         <td>{{inscription.id}}</td>
-                        <td>{{inscription.formation.departement}}</td>
-                        <td>{{inscription.formation.produit.libelle}}</td>
-                        <td>{{inscription.formation.nombreHeures}}h</td>
                         <td>{{inscription.formation.dateDebut|date("d/m/Y")}}</td>
+                        <td>{{inscription.formation.nombreHeures}}h</td>
+                        <td>{{inscription.formation.produit.libelle}}</td>
+                        <td>{{inscription.formation.departement}}</td>
+                        <td>{{inscription.formation.description}}</td>
                         <td>{{inscription.employe.nom}} {{inscription.employe.prenom}}</td>
                         <td>{{inscription.statut}}</td>
                         {% if is_granted("ROLE_ADMIN") %}
