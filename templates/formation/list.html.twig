@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste des formations{% endblock %}
+
+{% block content %}
+    <h3>Liste des formations</h3>
+    
+    {% if is_granted("ROLE_ADMIN") %}
+        <a href="{{path("app_formation_add")}}" class="btn btn-success">Ajouter</a>
+        <a href="{{path("app_produit_list")}}" class="btn btn-primary">Voir les produits</a>
+    {% endif %}
+
+    {% if formations is empty %}
+        <div>Aucune formation enregistrée</div>
+    {% else %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date de début</th>
+                    <th>Nombre d'heures</th>
+                    <th>Département</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for formation in formations %}
+                    <tr>
+                        <td>{{formation.id}}</td>
+                        <td>{{formation.dateDebut|date("d/m/Y")}}</td>
+                        <td>{{formation.nombreHeures}}h</td>
+                        <td>{{formation.departement}}</td>
+                        <td>
+                            {% if is_granted("ROLE_ADMIN") %}
+                               <a href="{{path("app_formation_remove", {"id": formation.id})}}" class="btn btn-danger">Supprimer</a>
+                            {% else %}
+                                <a href="{{path("app_inscription_add", {"id": formation.id})}}" class="btn btn-primary">S'inscrire</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

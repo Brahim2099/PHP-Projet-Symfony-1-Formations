@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+<form method="post">
+    <h2>Système de gestion de formations</h2>
+    <h3>Connexion</h3>
+
+    {% if error %}
+        <div class="w-50 alert alert-danger">
+            {{error.messageKey|trans(error.messageData, 'security')}}
+        </div>
+    {% endif %}
+
+    <label for="inputUsername">
+        Identifiant
+        <input type="text" value="{{last_username}}" name="username" id="inputUsername" required>
+    </label>
+    <br>
+    <label for="inputPassword">
+        Mot de passe
+        <input type="password" name="password" id="inputPassword"required>
+    </label>
+
+    <input type="hidden" name="_csrf_token"value="{{csrf_token('authenticate')}}">
+    <br>
+    <button type="submit" class="btn btn-primary">Connexion</button>
+</form>
+{% endblock %}
+
+{% block style %}
+<style>
+    label {
+        margin-bottom: 1%;
+    }
+</style>
+{% endblock %}

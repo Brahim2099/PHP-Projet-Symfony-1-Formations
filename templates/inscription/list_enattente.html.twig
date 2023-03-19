@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste des inscriptions en attente{% endblock %}
+
+{% block content %}
+    <h3>Liste des inscriptions en attente</h3>
+    {% if inscriptions is empty %}
+        <div class="alert alert-danger">Aucune inscription en attente enregistrée</div>
+    {% else %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Département de la formation</th>
+                    <th>Produit de la formation</th>
+                    <th>Durée</th>
+                    <th>Date de début</th>
+                    <th>Nom et prénom</th>
+                    <th>Statut</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inscription in inscriptions %}
+                    <tr>
+                        <td>{{inscription.id}}</td>
+                        <td>{{inscription.formation.departement}}</td>
+                        <td>{{inscription.formation.produit.libelle}}</td>
+                        <td>{{inscription.formation.nombreHeures}}h</td>
+                        <td>{{inscription.formation.dateDebut|date("d/m/Y")}}</td>
+                        <td>{{inscription.employe.nom}} {{inscription.employe.prenom}}</td>
+                        <td>{{inscription.statut}}</td>
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <td>
+                                <a href="{{path("app_inscription_edit_statut", {"id": inscription.id, "statut": "Acceptée"})}}" class="btn btn-success">Accepter</a>
+                            </td>
+                            <td>
+                                <a href="{{path("app_inscription_edit_statut", {"id": inscription.id, "statut": "Refusée"})}}" class="btn btn-danger">Refuser</a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des employés{% endblock %}
+
+{% block content %}
+    <h3>Liste des employés</h3>
+    <a href="{{path("app_employe_add")}}" class="btn btn-success">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Identifiant</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employe in employes %}
+                <tr>
+                    <td>{{employe.id}}</td>
+                    <td>{{employe.username}}</td>
+                    <td>{{employe.nom}}</td>
+                    <td>{{employe.prenom}}</td>
+                    <td>
+                        <a href="{{path("app_employe_remove", {"id": employe.id})}}" class="btn btn-warning">Modifier</a>
+                    </td>
+                    <td>
+                        {% if employe.id != app.user.id %}
+                            <a href="{{path("app_employe_remove", {"id": employe.id})}}" class="btn btn-danger">Supprimer</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
