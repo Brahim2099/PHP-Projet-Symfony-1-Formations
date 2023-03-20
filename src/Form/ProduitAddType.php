@@ -15,7 +15,7 @@ class ProduitAddType extends AbstractType
     {
         $builder
             ->add('libelle', TextType::class)
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, ["label" => "Ajouter", "attr" => ["class" => "btn btn-success"]])
         ;
     }
 

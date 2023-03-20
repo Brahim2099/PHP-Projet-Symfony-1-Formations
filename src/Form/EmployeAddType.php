@@ -19,7 +19,7 @@ class EmployeAddType extends AbstractType
             ->add('password', PasswordType::class)
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, ["label" => "Ajouter", "attr" => ["class" => "btn btn-success"]])
         ;
     }
 

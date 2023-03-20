@@ -14,7 +14,6 @@
                 <th>Prénom</th>
                 <th></th>
                 <th></th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -25,20 +24,15 @@
                     <td>{{employe.nom}}</td>
                     <td>{{employe.prenom}}</td>
                     <td>
-                        <a href="{{path("app_employe_remove", {"id": employe.id})}}" class="btn btn-warning">Modifier</a>
+                        {% if employe.roles[0] != "ROLE_ADMIN" %}
+                            <a href="{{path("app_employe_inscription_list", {"id": employe.id})}}" class="btn btn-primary   ">Voir ses inscriptions</a>
+                        {% endif %}
                     </td>
                     <td>
                         {% if employe.id != app.user.id %}
                             <a href="{{path("app_employe_remove", {"id": employe.id})}}" class="btn btn-danger">Supprimer</a>
                         {% endif %}
                     </td>
-                    {% if employe.roles[0] != "ROLE_ADMIN" %}
-                        <td>
-                            <a href="{{path("app_employe_inscription_list", {"id": employe.id})}}" class="btn btn-primary   ">Voir ses inscriptions</a>
-                        </td>
-                        {% else %}
-                        <td></td>
-                    {% endif %}
                 </tr>
             {% endfor %}
         </tbody>

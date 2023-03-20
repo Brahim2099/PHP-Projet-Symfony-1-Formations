@@ -22,7 +22,7 @@ class FormationAddType extends AbstractType
             ->add('departement', TextType::class)
             ->add('Produit', EntityType::class, ['class'=> 'App\Entity\Produit','choice_label'=>'libelle'])
             ->add('description', TextType::class)
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, ["label" => "Ajouter", "attr" => ["class" => "btn btn-success"]])
         ;
     }
 

@@ -40,6 +40,9 @@
                             <td>
                                 <a href="{{path("app_inscription_edit_statut", {"id": inscription.id, "statut": "Refusée"})}}" class="btn btn-danger">Refuser</a>
                             </td>
+                        {% else %}
+                            <td></td>
+                            <td></td>
                         {% endif %}
                     </tr>
                 {% endfor %}

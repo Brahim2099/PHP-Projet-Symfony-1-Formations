@@ -4,5 +4,20 @@
 
 {% block content %}
     <h3>Ajout d'un produit</h3>
-    {{form(formulaire)}}
+    {{form_start(formulaire)}}
+        <label for="produit_add_libelle">
+            Libellé
+            {{form_widget(formulaire.libelle)}}
+        </label>
+        <br>
+        {{form_widget(formulaire.submit)}}
+    {{form_end(formulaire)}}
+{% endblock %}
+
+{% block style %}
+<style>
+    label {
+        margin-bottom: 1%;
+    }
+</style>
 {% endblock %}

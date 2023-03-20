@@ -15,12 +15,12 @@
 
     <label for="inputUsername">
         Identifiant
-        <input type="text" value="{{last_username}}" name="username" id="inputUsername" required>
+        <input type="text" name="username" id="inputUsername" value="{{last_username}}" required>
     </label>
     <br>
     <label for="inputPassword">
         Mot de passe
-        <input type="password" name="password" id="inputPassword"required>
+        <input type="password" name="password" id="inputPassword" required>
     </label>
 
     <input type="hidden" name="_csrf_token"value="{{csrf_token('authenticate')}}">
