@@ -4,5 +4,40 @@
 
 {% block content %}
     <h3>Ajout d'une formation</h3>
-    {{form(formulaire)}}
+    {{form_start(formulaire)}}
+        <label for="formation_add_dateDebut">
+            Date de début
+            {{form_widget(formulaire.dateDebut)}}
+        </label>
+        <br>
+        <label for="formation_add_nombreHeures">
+            Nombre d'heures
+            {{form_widget(formulaire.nombreHeures)}}
+        </label>
+        <br>
+        <label for="formation_add_departement">
+            Date de début
+            {{form_widget(formulaire.departement)}}
+        </label>
+        <br>
+        <label for="formation_add_Produit">
+            Choix du produit
+            {{form_widget(formulaire.Produit)}}
+        </label>
+        <br>
+        <label for="formation_add_description">
+            Description
+            {{form_widget(formulaire.description)}}
+        </label>
+        <br>
+        {{form_widget(formulaire.submit)}}
+    {{form_end(formulaire)}}
+{% endblock %}
+
+{% block style %}
+<style>
+    label {
+        margin-bottom: 1%;
+    }
+</style>
 {% endblock %}
