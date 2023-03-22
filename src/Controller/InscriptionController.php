@@ -53,7 +53,7 @@ class InscriptionController extends AbstractController
         $inscription->setEmploye($employe);
         $inscription->setFormation($doctrine->getManager()->getRepository(Formation::class)->find($id));
 
-        $inscriptionExistante = $doctrine->getManager()->getRepository(Inscription::class)->findBy(["Formation" => $id, "Employe" => $employe->getId(), "statut" => "Acceptée"]);
+        $inscriptionExistante = $doctrine->getManager()->getRepository(Inscription::class)->findBy(["Formation" => $id, "Employe" => $employe->getId()]);
 
         if (!$inscriptionExistante) {
             $inscription->setStatut("En attente");
@@ -83,7 +83,6 @@ class InscriptionController extends AbstractController
         return $this->redirectToRoute("app_inscription_list");
     }
 
-    #[IsGranted('ROLE_ADMIN')]
     #[Route('/inscription/remove/{id}', name: 'app_inscription_remove')]
     public function remove(ManagerRegistry $doctrine, int $id): Response
     {
