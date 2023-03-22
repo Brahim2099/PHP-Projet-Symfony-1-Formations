@@ -5,24 +5,29 @@
 {% block content %}
     <h3>Ajout d'un employé</h3>
     {{form_start(formulaire)}}
-        <label for="">
+        <label for="employe_add_nom">
             Nom
             {{form_widget(formulaire.nom)}}
         </label>
         <br>
-        <label for="">
+        <label for="employe_add_prenom">
             Prénom
             {{form_widget(formulaire.prenom)}}
         </label>
         <br>
-        <label for="">
+        <label for="employe_add_username">
             Identifiant
             {{form_widget(formulaire.username)}}
         </label>
         <br>
-        <label for="">
+        <label for="employe_add_password">
             Mot de passe
             {{form_widget(formulaire.password)}}
+        </label>
+        <br>
+        <label for="employe_add_roles">
+            Rôles <i>(Permission d'accès)</i> :
+            {{form_widget(formulaire.roles)}}
         </label>
         <br>
         {{form_widget(formulaire.submit)}}

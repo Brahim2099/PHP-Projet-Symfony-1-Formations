@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Employe;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,6 +20,7 @@ class EmployeAddType extends AbstractType
             ->add('password', PasswordType::class)
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
+            ->add('roles', ChoiceType::class, ['choices' => ['Administrateur' => "ROLE_ADMIN"], 'expanded' => true, 'multiple' => true])
             ->add('submit', SubmitType::class, ["label" => "Ajouter", "attr" => ["class" => "btn btn-success"]])
         ;
     }
