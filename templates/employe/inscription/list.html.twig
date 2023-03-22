@@ -5,7 +5,7 @@
 {% block content %}
     <h3>Liste des inscriptions de l'employé {{employe.nom}} {{employe.prenom}}</h3>
     {% if inscriptions is empty %}
-        <div class="w-50 alert alert-danger">Aucune inscription enregistrée pour cette employé</div>
+        <div class="w-50 alert alert-danger">Aucune inscription enregistrée pour cet employé</div>
     {% else %}
         <table class="table">
             <thead>
@@ -16,7 +16,6 @@
                     <th>Produit de la formation</th>
                     <th>Département</th>
                     <th>Description</th>
-                    <th>Nom et prénom</th>
                     <th>Statut</th>
                     <th></th>
                 </tr>
@@ -30,7 +29,6 @@
                         <td>{{inscription.formation.produit.libelle}}</td>
                         <td>{{inscription.formation.departement}}</td>
                         <td>{{inscription.formation.description}}</td>
-                        <td>{{inscription.employe.nom}} {{inscription.employe.prenom}}</td>
                         <td>{{inscription.statut}}</td>
                     </tr>
                 {% endfor %}
