@@ -5,7 +5,7 @@
 {% block content %}
     <h3>Liste des inscriptions de l'employé {{employe.nom}} {{employe.prenom}}</h3>
     {% if inscriptions is empty %}
-        <div class="alert alert-danger">Aucune inscription enregistrée pour cette employé</div>
+        <div class="w-50 alert alert-danger">Aucune inscription enregistrée pour cette employé</div>
     {% else %}
         <table class="table">
             <thead>
