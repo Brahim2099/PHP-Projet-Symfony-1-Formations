@@ -4,5 +4,11 @@
 
 {% block content %}
     <h3>Acceuil</h3>
-    <p>Connecté, en tant que {{app.user.nom}} {{app.user.prenom}}<p>
+    <p>Connecté, en tant que 
+        {% if app.user.nom and app.user.prenom %}
+            {{app.user.nom}} {{app.user.prenom}}
+        {% else %}
+            {{app.user.username}}
+        {% endif %}
+    <p>
 {% endblock %}
