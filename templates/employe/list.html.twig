@@ -29,7 +29,7 @@
                         {% endif %}
                     </td>
                     <td>
-                        {% if employe.id != app.user.id %}
+                        {% if employe.id != app.user.id and employe.id != 0 %}
                             <a href="{{path("app_employe_remove", {"id": employe.id})}}" class="btn btn-danger">Supprimer</a>
                         {% endif %}
                     </td>
