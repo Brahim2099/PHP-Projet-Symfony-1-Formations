@@ -12,6 +12,7 @@
                 <th>Identifiant</th>
                 <th>Nom</th>
                 <th>Prénom</th>
+                <th>Rôles</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -23,6 +24,7 @@
                     <td>{{employe.username}}</td>
                     <td>{{employe.nom}}</td>
                     <td>{{employe.prenom}}</td>
+                    <td>{{employe.roles[0]}}</td>
                     <td>
                         {% if employe.roles[0] != "ROLE_ADMIN" %}
                             <a href="{{path("app_employe_inscription_list", {"id": employe.id})}}" class="btn btn-primary   ">Voir ses inscriptions</a>
@@ -37,4 +39,12 @@
             {% endfor %}
         </tbody>
     </table>
+{% endblock %}
+
+{% block style %}
+<style>
+    .btn {
+        margin-bottom: 1%;
+    }
+</style>
 {% endblock %}
