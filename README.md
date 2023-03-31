@@ -1,10 +1,10 @@
 # PHP-Projet-Symfony-1-Formations
 Application en PHP (Framework Symfony), permettant la gestion des formations des employés de l'entreprise "Ubisoft"
 
-La base de données est disponible dans :
-▪ Microsoft Teams : Equipe 2023 -> 2023 SIO -> Canal : CCF E5 SLAM
-
 Utilisation du Security Bundle !
+
+La base de données ainsi que les documents sont disponibles dans :
+▪ Microsoft Teams : Equipe 2023 -> 2023 SIO -> Canal : CCF E5 SLAM
 
 Identifiants d’accès :
 ▪ Identifiant : administrateur – Mot de passe : administrateur
