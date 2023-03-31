@@ -3,7 +3,7 @@ Application en PHP (Framework Symfony), permettant la gestion des formations des
 
 Utilisation du Security Bundle !
 
-La base de données ainsi que les documents sont disponibles dans :
+La base de données ainsi que les documents sont aussi disponibles dans :
 ▪ Microsoft Teams : Equipe 2023 -> 2023 SIO -> Canal : CCF E5 SLAM
 
 Identifiants d’accès :
