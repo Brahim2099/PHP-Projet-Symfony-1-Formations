@@ -11,44 +11,48 @@
             {{app.user.username}}
         {% endif %}
     <p>
-    <canvas id="tableau"></canvas>
+    {% if is_granted("ROLE_ADMIN") %}
+        <canvas id="tableau"></canvas>
+    {% endif %}
 {% endblock %}
 
-{% block script %}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const tableau = document.getElementById("tableau");
+{% if is_granted("ROLE_ADMIN") %}
+    {% block script %}
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const tableau = document.getElementById("tableau");
 
-        new Chart(tableau, {
-            type: 'bar',
-            data: {
-            labels: ["En attente", 'Acceptées', 'Refusées'],
-            datasets: [{
-                label: 'Inscriptions',
-                data: [{{inscriptionsEnattentes|length}}, {{inscriptionsAcceptees|length}}, {{inscriptionsRefusees|length}}],
-                borderWidth: 1,
-                backgroundColor: [
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(255, 99, 132, 0.2)'
-                ],
-                borderColor: [
-                    'rgb(255, 159, 64)',
-                    'rgb(75, 192, 192)',
-                    'rgb(255, 205, 86)'
-                ]
-            }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            stepSize: 1
+            new Chart(tableau, {
+                type: 'bar',
+                data: {
+                labels: ["En attente", 'Acceptées', 'Refusées'],
+                datasets: [{
+                    label: 'Inscriptions',
+                    data: [{{inscriptionsEnattentes|length}}, {{inscriptionsAcceptees|length}}, {{inscriptionsRefusees|length}}],
+                    borderWidth: 1,
+                    backgroundColor: [
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgb(255, 159, 64)',
+                        'rgb(75, 192, 192)',
+                        'rgb(255, 205, 86)'
+                    ]
+                }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
                         }
                     }
                 }
-            }
-        });
-    </script>
-{% endblock %}
+            });
+        </script>
+    {% endblock %}
+{% endif %}
