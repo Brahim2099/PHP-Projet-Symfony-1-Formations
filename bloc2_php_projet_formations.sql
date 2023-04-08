@@ -72,7 +72,7 @@ INSERT INTO `employe` (`id`, `username`, `roles`, `password`, `nom`, `prenom`) V
 (1, 'btahiri', '[\"ROLE_ADMIN\"]', '$2y$13$qI/tuFRau0gIm8cKngc4l.Bxym3Jtz1QzwYX1g5SzmFtl3nz8Ynpq', 'Tahiri', 'Brahim'),
 (2, 'njanvier', '[]', '$2y$13$P/Zbl4kTzhdqu8Q9l07BdOSGwKq7a1HMn7ptafvf8AS2Uayi1od/y', 'Nathan', 'Janvier'),
 (3, 'crakotomalala', '[]', '$2y$13$/S.WyKWWu/M9iOXdOpW0ueIrXkfucup10/Lh/AR/kBFrQ5L8GLhB6', 'Rakotomalala', 'Cédric'),
-(5, 'csofiane', '[]', '$2y$13$JesIE5zU6UOOG.UqHrEJPeGHCoCiD7DzfOra9z7Sbz3geaxgio9Hq', 'Chaoui', 'Sofiane'),
+(5, 'schaoui', '[]', '$2y$13$GxctKGfOOmlRDazJdYNDTe6f0f2a6CPdLAes01WePe1rzSBEI1x1O', 'Chaoui', 'Sofiane'),
 (6, 'lafonso', '[]', '$2y$13$XB2yjFm6.zlfflSMDg5fBeotUJoYey8IyJBunXa98j2uANt6AtVp6', 'Afonso', 'Lucas');
 
 -- --------------------------------------------------------
