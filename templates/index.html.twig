@@ -14,8 +14,20 @@
     <br>
     {% if is_granted("ROLE_ADMIN") %}
         <h5>Histogramme :</h5>
-        <canvas id="chart"></canvas>
+        <div class="chart">
+            <canvas id="chart"></canvas>
+        </div>
     {% endif %}
+{% endblock %}
+
+{% block style %}
+    <style>
+        .chart {
+            position: relative; 
+            height:50%; 
+            width:50%
+        }
+    </style>
 {% endblock %}
 
 {% block script %}
@@ -25,34 +37,15 @@
             const chart = document.getElementById("chart");
 
             new Chart(chart, {
-                type: 'bar',
+                type: "doughnut",
                 data: {
-                labels: ["En attente", 'Acceptées', 'Refusées'],
-                datasets: [{
-                    label: 'Inscriptions',
-                    data: [{{inscriptionsEnattentes|length}}, {{inscriptionsAcceptees|length}}, {{inscriptionsRefusees|length}}],
-                    borderWidth: 1,
-                    backgroundColor: [
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(255, 99, 132, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgb(255, 159, 64)',
-                        'rgb(75, 192, 192)',
-                        'rgb(255, 205, 86)'
-                    ]
-                }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                stepSize: 1
-                            }
-                        }
-                    }
+                    labels: ["En attentes", "Acceptées", "Refusées"],
+                    datasets: [{
+                        label: 'Nombre de formations',
+                        data: [{{inscriptionsEnattentes|length}}, {{inscriptionsAcceptees|length}}, {{inscriptionsRefusees|length}}],
+                        backgroundColor: ["rgb(255, 255, 0)", "rgb(0, 128, 0)", "rgb(255, 0, 0)"],
+                        hoverOffset: 4
+                    }]
                 }
             });
         </script>
