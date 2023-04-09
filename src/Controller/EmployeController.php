@@ -50,6 +50,12 @@ class EmployeController extends AbstractController
     {
         $employe = $doctrine->getManager()->getRepository(Employe::class)->find($id);
 
+        $inscriptions = $doctrine->getManager()->getRepository(Inscription::class)->findBy(["Employe" => $id]);
+
+        foreach ($inscriptions as $inscription) {
+            $employe->removeInscription($inscription);
+        }
+
         $entityManager = $doctrine->getManager();
         $entityManager->remove($employe);
         $entityManager->flush();

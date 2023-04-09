@@ -80,7 +80,7 @@ class InscriptionController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute("app_inscription_list");
+        return $this->redirectToRoute("app_inscription_list_enattente");
     }
 
     #[Route('/inscription/remove/{id}', name: 'app_inscription_remove')]
