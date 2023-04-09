@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Inscription;
 use Doctrine\Persistence\ManagerRegistry;
+use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,8 +14,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class NavigationController extends AbstractController
 {
     #[Route('/', name: 'app_index')]
-    public function index(ManagerRegistry $doctrine): Response
+    public function index(ManagerRegistry $doctrine, LoggerInterface $logger): Response
     {
+        /** @var \App\Entity\Employe $employe */
+        $employe = $this->getUser();
+        $logger->info("L'utilisateur ". $this->getUser(). " s'est connecté.");
+
         $inscriptionsEnattentes = $doctrine->getManager()->getRepository(Inscription::class)->findBy(["statut" => "En attente"]);
         $inscriptionsAcceptees = $doctrine->getManager()->getRepository(Inscription::class)->findBy(["statut" => "Acceptée"]);
         $inscriptionsRefusees = $doctrine->getManager()->getRepository(Inscription::class)->findBy(["statut" => "Refusée"]);
