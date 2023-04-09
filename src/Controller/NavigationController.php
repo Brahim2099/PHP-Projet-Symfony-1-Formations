@@ -18,7 +18,7 @@ class NavigationController extends AbstractController
     {
         /** @var \App\Entity\Employe $employe */
         $employe = $this->getUser();
-        $logger->info("L'utilisateur ". $this->getUser(). " s'est connecté.");
+        $logger->info("L'utilisateur ". $employe->getUsername(). " s'est connecté.");
 
         $inscriptionsEnattentes = $doctrine->getManager()->getRepository(Inscription::class)->findBy(["statut" => "En attente"]);
         $inscriptionsAcceptees = $doctrine->getManager()->getRepository(Inscription::class)->findBy(["statut" => "Acceptée"]);
